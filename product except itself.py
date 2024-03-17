@@ -1,4 +1,4 @@
-def product(lst):
+ def product(lst):
     n = len(lst)
     left_products = [1] * n  
     right_products = [1] * n 
@@ -21,7 +21,7 @@ print(product(lst))
 time complexity : O(n)
 space complexity : O(n)
 
-# ============================================================================
+# ============================================================================  Optimized solution
 def product(lst):
     n = len(lst)
     result = [1] * n
