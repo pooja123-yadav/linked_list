@@ -1,0 +1,40 @@
+def max_area(height):
+    max_water = 0
+    n = len(height)
+    
+    for i in range(n):
+        for j in range(i + 1, n):
+            # Calculate the area between the two lines
+            water = min(height[i], height[j]) * (j - i)
+            # Update max_water if the current area is greater
+            max_water = max(max_water, water)
+    
+    return max_water
+
+# Example usage:
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+print(max_area(height))  # Output: 49
+
+#  ============================================ optimized solution
+
+"def max_area(height):
+    l, r = 0, len(height) - 1
+    ans = 0
+
+    while l < r:
+        area = (r - l) * min(height[l], height[r])
+        ans = max(ans, area)
+        if height[l] <= height[r]:
+        	l += 1
+        else:
+            r -= 1 
+    
+    return ans
+
+# Example usage:
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+print(max_area(height))  # Output: 49
+
+
+time complexity : O(n)
+space complexity : O(1)"
