@@ -116,3 +116,41 @@ l.InsertAtGivenIndex(50, 0)
 l.updateNode(90,1)
 l.remove_at_index(1)
 print(l.printLL())
+
+# ======================================
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        count = 0 
+        current = head
+
+        while current:
+            count += 1
+            current = current.next
+
+        position = count - n
+
+        if position == 0:
+            return head.next
+
+        current = head
+        for _ in range(position-1):
+            current = current.next
+
+        current.next = current.next.next
+
+        return head    
+
+
+
+        
