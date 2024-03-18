@@ -1,0 +1,41 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        n = len(prices)
+        max_profit = 0
+        # ===========================brute force approach time: o(n2), space : o(1)
+        # for i in range(n):
+        #     for j in range(i+1, n):
+        #         if prices[i]<prices[j]:
+        #             max_profit = max(max_profit,prices[j]-prices[i])
+        
+        # ===========================second approach time: o(n), space : o(n)
+        # aux = [0]*n
+        # for i in range(n-1,-1,-1):
+        #     if i==n-1:
+        #         aux[i] = prices[i]
+        #     else: 
+        #         if aux[i+1]>=prices[i]:  
+        #             aux[i] = aux[i+1]
+        #         else:
+        #             aux[i] = prices[i]
+
+        # for i in range(n):
+        #     profit = aux[i]-prices[i]
+        #     max_profit = max(max_profit,profit)
+
+        # ====================third optimzed approach time: o(n), space : o(1)
+        minsofar = prices[0]
+        max_profit = 0
+
+        for i in range(n):
+            minsofar = min(minsofar,prices[i])
+            profit = prices[i] - minsofar
+            max_profit = max(max_profit, profit)
+
+        return max_profit        
+
+        
